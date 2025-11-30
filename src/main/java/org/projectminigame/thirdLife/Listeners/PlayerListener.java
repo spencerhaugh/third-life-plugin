@@ -28,6 +28,7 @@ public class PlayerListener implements Listener {
          */
         if (thirdLife.DEBUG_ENABLED) {
             event.getPlayer().setStatistic(Statistic.DEATHS, 0);
+            player.sendMessage("Debug mode is enabled");
         }
         
         NametagManager.createScoreboardAndSetNameTags(player);
