@@ -1,0 +1,11 @@
+name: third-life
+version: '1.0-SNAPSHOT'
+main: org.projectminigame.thirdLife.ThirdLife
+api-version: '1.21'
+authors: [ Spencer Haugh ]
+description: A re-creation of the Life Series season 1, Third Life
+commands:
+  debug:
+    description: Always set player deaths back to 0 on join when enabled
+  setlives:
+    description: Reset a players available lives to 0, 1, 2, or 3

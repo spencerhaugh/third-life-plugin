@@ -1,0 +1,11 @@
+org/projectminigame/thirdLife/Managers/NametagManager.class
+org/projectminigame/thirdLife/Commands/DebugCommand.class
+org/projectminigame/thirdLife/Listeners/PlayerListener$3.class
+org/projectminigame/thirdLife/ThirdLife.class
+org/projectminigame/thirdLife/utils/NameColors.class
+org/projectminigame/thirdLife/Listeners/PlayerListener$1.class
+org/projectminigame/thirdLife/Listeners/PlayerListener.class
+org/projectminigame/thirdLife/Managers/LifeManager.class
+org/projectminigame/thirdLife/utils/StatsUtil.class
+org/projectminigame/thirdLife/Commands/SetLivesCommand.class
+org/projectminigame/thirdLife/Listeners/PlayerListener$2.class
