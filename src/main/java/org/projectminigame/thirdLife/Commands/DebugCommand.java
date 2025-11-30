@@ -1,5 +1,6 @@
 package org.projectminigame.thirdLife.Commands;
 
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -21,8 +22,14 @@ public class DebugCommand implements CommandExecutor {
         @NotNull String s,
         @NotNull String @NotNull [] args
     ) {
-        if (commandSender instanceof Player) {
-            Player player = (Player) commandSender;
+        if (commandSender instanceof Player player) {
+            if (!player.isOp()) {
+                player.sendMessage(
+                    ChatColor.RED +
+                        "You must be op to use this command."
+                );
+                return false;
+            }
             
             if (args.length != 1) {
                 player.sendMessage("Usage: /debug <enable | disable>");
