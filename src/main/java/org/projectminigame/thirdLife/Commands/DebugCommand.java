@@ -33,6 +33,7 @@ public class DebugCommand implements CommandExecutor {
             
             if (args.length != 1) {
                 player.sendMessage("Usage: /debug <enable | disable>");
+                return false;
             }
             
             if (args[0].equalsIgnoreCase("enable")) {
