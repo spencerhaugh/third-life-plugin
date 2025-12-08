@@ -23,26 +23,31 @@ public class DebugCommand implements CommandExecutor {
         @NotNull String @NotNull [] args
     ) {
         if (commandSender instanceof Player player) {
-            if (!player.isOp()) {
-                player.sendMessage(
-                    ChatColor.RED +
-                        "You must be op to use this command."
-                );
-                return false;
-            }
-            
-            if (args.length != 1) {
-                player.sendMessage("Usage: /debug <enable | disable>");
-                return false;
-            }
-            
-            if (args[0].equalsIgnoreCase("enable")) {
-                thirdLife.DEBUG_ENABLED = true;
-                player.sendMessage("Debug enabled. Deaths reset on each login");
-            } else if (args[0].equalsIgnoreCase("disable")) {
-                thirdLife.DEBUG_ENABLED = false;
-                player.sendMessage("Debug disabled");
-            }
+            return execute(player, args);
+        }
+        return false;
+    }
+    
+    public boolean execute(Player player, String[] args) {
+        if (!player.isOp()) {
+            player.sendMessage(
+                ChatColor.RED +
+                "You must be op to use this command."
+            );
+            return false;
+        }
+        
+        if (args.length != 1) {
+            player.sendMessage("Usage: /debug <enable | disable>");
+            return false;
+        }
+        
+        if (args[0].equalsIgnoreCase("enable")) {
+            thirdLife.DEBUG_ENABLED = true;
+            player.sendMessage("Debug enabled. Deaths reset on each login");
+        } else if (args[0].equalsIgnoreCase("disable")) {
+            thirdLife.DEBUG_ENABLED = false;
+            player.sendMessage("Debug disabled. Regular gameplay mode ON.");
         }
         
         return false;
