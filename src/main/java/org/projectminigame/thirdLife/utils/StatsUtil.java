@@ -4,7 +4,7 @@ import org.bukkit.Statistic;
 import org.bukkit.entity.Player;
 
 public class StatsUtil {
-    public int getPlayerDeathCount(Player player) {
+    public static int getPlayerDeathCount(Player player) {
         if (player == null) {
             throw new IllegalArgumentException("Player cannot be null");
         }

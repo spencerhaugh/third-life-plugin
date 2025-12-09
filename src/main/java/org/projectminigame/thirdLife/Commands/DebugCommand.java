@@ -38,7 +38,7 @@ public class DebugCommand implements CommandExecutor {
         }
         
         if (args.length != 1) {
-            player.sendMessage("Usage: /debug <enable | disable>");
+            usage(player);
             return false;
         }
         
@@ -48,8 +48,13 @@ public class DebugCommand implements CommandExecutor {
         } else if (args[0].equalsIgnoreCase("disable")) {
             thirdLife.DEBUG_ENABLED = false;
             player.sendMessage("Debug disabled. Regular gameplay mode ON.");
+        } else {
+            usage(player);
         }
-        
         return false;
+    }
+    
+    public void usage(Player player) {
+        player.sendMessage("Usage: /debug <enable | disable>");
     }
 }

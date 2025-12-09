@@ -6,22 +6,13 @@ import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Team;
 import org.projectminigame.thirdLife.utils.NameColors;
-import org.projectminigame.thirdLife.ThirdLife;
 
 public class NametagManager {
-    static ThirdLife thirdLife;
-    static LifeManager lifeManager;
     
     static String greenMessage = ChatColor.GREEN + "You have 3 lives. Stay alive!";
     static String yellowMessage = ChatColor.YELLOW + "You are on your Yellow life. Be careful.";
     static String redMessage = ChatColor.RED + "You are on your RED life. You can now kill other players.";
     static String eliminatedMessage = ChatColor.GRAY + "You ran out of lives.";
-    
-    
-    public NametagManager(ThirdLife plugin) {
-        thirdLife = plugin;
-        lifeManager = plugin.getLifeManager();
-    }
     
     public static void createScoreboardAndSetNameTags(Player player) {
         player.setScoreboard(
@@ -39,7 +30,7 @@ public class NametagManager {
             return;
         }
         
-        int playerDeaths = lifeManager.getDeathCount(player);
+        int playerDeaths = LifeManager.getDeathCount(player);
         
         if (playerDeaths >= 3) {
             playerOutOfLives(player);

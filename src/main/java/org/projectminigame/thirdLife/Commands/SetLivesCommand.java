@@ -11,6 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import org.projectminigame.thirdLife.Managers.NametagManager;
 
 public class SetLivesCommand implements CommandExecutor {
+    
     @Override
     public boolean onCommand(
         @NotNull CommandSender commandSender,
