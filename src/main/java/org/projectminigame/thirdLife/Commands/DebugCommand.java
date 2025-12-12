@@ -12,6 +12,11 @@ public class DebugCommand implements CommandExecutor {
     
     private static ThirdLife thirdLife;
     
+    public enum DebugState {
+        ENABLE,
+        DISABLE
+    }
+    
     public DebugCommand(ThirdLife plugin) {
         thirdLife = plugin;
     }
@@ -42,13 +47,15 @@ public class DebugCommand implements CommandExecutor {
             return false;
         }
         
-        if (args[0].equalsIgnoreCase("enable")) {
+        if (args[0].equalsIgnoreCase(DebugState.ENABLE.toString())) {
             thirdLife.DEBUG_ENABLED = true;
             player.sendMessage("Debug enabled. Deaths reset on each login");
-        } else if (args[0].equalsIgnoreCase("disable")) {
+        }
+        else if (args[0].equalsIgnoreCase(DebugState.DISABLE.toString())) {
             thirdLife.DEBUG_ENABLED = false;
             player.sendMessage("Debug disabled. Regular gameplay mode ON.");
-        } else {
+        }
+        else {
             usage(player);
         }
         return false;
