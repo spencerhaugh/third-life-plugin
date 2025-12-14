@@ -8,7 +8,6 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.scheduler.BukkitRunnable;
-import org.projectminigame.thirdLife.Managers.NametagManager;
 import org.projectminigame.thirdLife.ThirdLife;
 
 public class PlayerListener implements Listener {
@@ -27,12 +26,13 @@ public class PlayerListener implements Listener {
             Use command: /debug <enable | disable>
          */
         if (thirdLife.DEBUG_ENABLED) {
-            event.getPlayer().setStatistic(Statistic.DEATHS, 0);
+            player.setStatistic(Statistic.DEATHS, 0);
+            this.thirdLife.logger.info("DEBUG: " + player.getName() + "'s Death Stat set to 0");
             player.sendMessage("Debug mode is enabled");
         }
         
-        NametagManager.createScoreboardAndSetNameTags(player);
-        NametagManager.handleAssignNametagColor(player);
+        this.thirdLife.getNametagManager().createScoreboardAndSetNameTags(player);
+        this.thirdLife.getNametagManager().handleAssignNametagColor(player);
     }
     
     @EventHandler
@@ -43,14 +43,14 @@ public class PlayerListener implements Listener {
         new BukkitRunnable() {
             @Override
             public void run() {
-                NametagManager.removePlayerNametagFromScoreboard(player);
+                thirdLife.getNametagManager().removePlayerNametagFromScoreboard(player);
             }
         }.runTaskLater(thirdLife, 1);
         
         new BukkitRunnable() {
             @Override
             public void run() {
-                NametagManager.handleAssignNametagColor(player);
+                thirdLife.getNametagManager().handleAssignNametagColor(player);
             }
         }.runTaskLater(thirdLife, 2);
     }
@@ -60,7 +60,7 @@ public class PlayerListener implements Listener {
         new BukkitRunnable() {
             @Override
             public void run() {
-                NametagManager.removePlayerNametagFromScoreboard(event.getPlayer());
+                thirdLife.getNametagManager().removePlayerNametagFromScoreboard(event.getPlayer());
             }
         }.runTaskLater(thirdLife, 1);
     }

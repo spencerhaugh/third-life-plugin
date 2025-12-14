@@ -10,7 +10,7 @@ public enum NameColors {
     
     private ChatColor color;
     
-    private NameColors(ChatColor color) {
+    NameColors(ChatColor color) {
         this.color = color;
     }
     

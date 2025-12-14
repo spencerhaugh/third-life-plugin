@@ -37,11 +37,11 @@ public final class ThirdLife extends JavaPlugin {
         
         // Manager instances
         this.lifeManager = new LifeManager();
-        this.nametagManager = new NametagManager();
+        this.nametagManager = new NametagManager(this);
         
         // Commands
         getCommand("debug").setExecutor(new DebugCommand(this));
-        getCommand("setlives").setExecutor(new SetLivesCommand());
+        getCommand("setlives").setExecutor(new SetLivesCommand(this));
     }
     
     // Getters

@@ -2,15 +2,19 @@ package org.projectminigame.thirdLife.Commands;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Statistic;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
-import org.projectminigame.thirdLife.Managers.NametagManager;
+import org.projectminigame.thirdLife.ThirdLife;
 
 public class SetLivesCommand implements CommandExecutor {
+    ThirdLife thirdLife;
+    
+    public SetLivesCommand(ThirdLife thirdLife){
+        this.thirdLife = thirdLife;
+    }
     
     @Override
     public boolean onCommand(
@@ -54,16 +58,16 @@ public class SetLivesCommand implements CommandExecutor {
         
         switch (lives) {
             case 0:
-                target.setStatistic(Statistic.DEATHS, 3);
+                this.thirdLife.getLifeManager().setDeaths(target, 3);
                 break;
             case 1:
-                target.setStatistic(Statistic.DEATHS, 2);
+                this.thirdLife.getLifeManager().setDeaths(target, 2);
                 break;
             case 2:
-                target.setStatistic(Statistic.DEATHS, 1);
+                this.thirdLife.getLifeManager().setDeaths(target, 1);
                 break;
             case 3:
-                target.setStatistic(Statistic.DEATHS, 0);
+                this.thirdLife.getLifeManager().setDeaths(target, 0);
                 break;
             default:
                 player.sendMessage(ChatColor.RED + "Error: Out of bounds! Set lives to 1, 2, 3 or 0.");
@@ -72,8 +76,8 @@ public class SetLivesCommand implements CommandExecutor {
     
         livesResetMessage(player, target, lives);
         
-        NametagManager.removePlayerNametagFromScoreboard(target);
-        NametagManager.handleAssignNametagColor(target);
+        this.thirdLife.getNametagManager().removePlayerNametagFromScoreboard(target);
+        this.thirdLife.getNametagManager().handleAssignNametagColor(target);
             return false;
     }
 
